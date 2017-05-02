@@ -24,6 +24,8 @@ typedef struct asio_event_t
 #ifdef PLATFORM_IS_WINDOWS
   HANDLE timer;         /* timer handle */
 #endif
+  int size;
+  void* meta_data;
 } asio_event_t;
 
 /// Message that carries an event and event flags.
@@ -41,8 +43,10 @@ typedef struct asio_msg_t
  *  based on quiescence.
  */
 asio_event_t* pony_asio_event_create(pony_actor_t* owner, int fd,
-  uint32_t flags, uint64_t nsec, bool noisy);
+				     uint32_t flags, uint64_t nsec, bool noisy);
 
+asio_event_t* pony_asio_event_create_fut(pony_actor_t* owner, int fd,
+					 uint32_t flags, uint64_t nsec, bool noisy,int size,void *meta_data);
 /** Deallocates an ASIO event.
  */
 void pony_asio_event_destroy(asio_event_t* ev);
