@@ -57,6 +57,8 @@ $(LIB_DIR):
 COMMON_INC=$(RUNTIME_DIR)/common/*
 POOL_INC=$(RUNTIME_DIR)/pony/libponyrt/mem/pool.h
 PONY_INC=$(RUNTIME_DIR)/pony/libponyrt/*.h
+ASIO_INC_H=$(RUNTIME_DIR)/pony/libponyrt/asio/*.c
+ASIO_INC_C=$(RUNTIME_DIR)/pony/libponyrt/asio/*.h
 PONY_LIB=$(RUNTIME_DIR)/pony/bin/$(CONFIG)/libponyrt.a
 FUTURE_INC=$(FUTURE_DIR)/future.h
 FUTURE_LIB=$(RUNTIME_DIR)/pony/bin/$(CONFIG)/libfuture.a
@@ -105,6 +107,8 @@ pony: dirs $(PONY_INC)
 	cp -r $(ARRAY_LIB) $(LIB_DIR)
 	cp -r $(TUPLE_LIB) $(LIB_DIR)
 	cp -r $(RANGE_LIB) $(LIB_DIR)
+	cp -r $(ASIO_INC_C) $(INC_DIR)
+	cp -r $(ASIO_INC_H) $(INC_DIR)
 
 clean:
 	rm -rf .stack-work/dist
